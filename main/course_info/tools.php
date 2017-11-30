@@ -77,6 +77,50 @@ switch ($action) {
             get_lang('Description'),
             array('rows' => '3', 'cols' => '40')
         );
+        // Reset link button
+        $toolInfo = array(
+            array('tool_id' => '1','name' => 'course_description','link' => 'course_description/'),
+            array('tool_id' => '2','name' => 'calendar_event','link' => 'calendar/agenda.php'),
+            array('tool_id' => '3','name' => 'document','link' => 'document/document.php'),
+            array('tool_id' => '4','name' => 'learnpath','link' => 'lp/lp_controller.php'),
+            array('tool_id' => '5','name' => 'link','link' => 'link/link.php'),
+            array('tool_id' => '6','name' => 'quiz','link' => 'exercise/exercise.php'),
+            array('tool_id' => '7','name' => 'announcement','link' => 'announcements/announcements.php'),
+            array('tool_id' => '8','name' => 'forum','link' => 'forum/index.php'),
+            array('tool_id' => '9','name' => 'dropbox','link' => 'dropbox/index.php'),
+            array('tool_id' => '10','name' => 'user','link' => 'user/user.php'),
+            array('tool_id' => '11','name' => 'group','link' => 'group/group.php'),
+            array('tool_id' => '12','name' => 'chat','link' => 'chat/chat.php'),
+            array('tool_id' => '13','name' => 'student_publication','link' => 'work/work.php'),
+            array('tool_id' => '14','name' => 'survey','link' => 'survey/survey_list.php'),
+            array('tool_id' => '15','name' => 'wiki','link' => 'wiki/index.php'),
+            array('tool_id' => '16','name' => 'gradebook','link' => 'gradebook/index.php'),
+            array('tool_id' => '17','name' => 'glossary','link' => 'glossary/index.php'),
+            array('tool_id' => '18','name' => 'notebook','link' => 'notebook/index.php'),
+            array('tool_id' => '19','name' => 'attendance','link' => 'attendance/index.php'),
+            array('tool_id' => '20','name' => 'course_progress','link' => 'course_progress/index.php'),
+            array('tool_id' => '23','name' => 'search','link' => 'search'),
+            array('tool_id' => '24','name' => 'blog_management','link' => 'blog/blog_admin.php'),
+            array('tool_id' => '25','name' => 'tracking','link' => 'tracking/courseLog.php'),
+            array('tool_id' => '26','name' => 'course_setting','link' => 'course_info/infocours.php'),
+            array('tool_id' => '27','name' => 'course_maintenance','link' => 'course_info/maintenance.php'),
+            array('tool_id' => '28','name' => 'bbb','link' => 'bbb/start.php')
+        );
+        foreach ($toolInfo as $ti) {
+            if ($ti['tool_id'] == $tool['id']) {
+                $t = $ti;
+            }
+        }
+        $form->addButtonReset(get_lang('Restore'));
+        $form->addHtml('<script>');
+        $form->addHtml('$(document).ready(function() {
+                            $("#icon_edit_reset").on("click", function() {
+                                $("#icon_edit_name").attr("value", "' . $t['name'] . '");
+                                $("#icon_edit_link").attr("value", "' . $t['link'] . '");
+                            });
+                        });');
+        $form->addHtml('</script>');
+        
         $form->addButtonUpdate(get_lang('Update'));
         $form->addHtml('</div>');
         $form->addHtml('<div class="col-md-5">');
